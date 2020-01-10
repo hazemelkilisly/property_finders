@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::API
 
-  rescue_from Exception do |_exception|
-    render :json => generate_errors_hash('Issue happened while trying to fetch your data.'), status: 500
-  end
+#  rescue_from Exception do |_exception|
+#    render :json => generate_errors_hash('Issue happened while trying to fetch your data.'), status: 500
+#  end
 
   private
 
