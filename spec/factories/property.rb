@@ -12,25 +12,19 @@ FactoryBot.define do
     price {Faker::Number.between(from: 90000, to: 900000)}
   end
 
-  # I'm aware I didn't use any of the factories here
-  # but had problems passing them in creation, so skipped them for now
   trait :is_apartment do
     property_type {'apartment'}
   end
-  factory :apartment, traits: %i(is_appartment)
 
   trait :is_single_family_house do
     property_type {'single_family_house'}
   end
-  factory :single_family_house, traits: %i(is_single_family_house)
 
   trait :is_rent do
     marketing_type {'rent'}
   end
-  factory :rent, traits: %i(is_rent)
 
   trait :is_sell do
     marketing_type {'sell'}
   end
-  factory :sell, traits: %i(is_sell)
 end

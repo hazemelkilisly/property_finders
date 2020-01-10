@@ -54,9 +54,9 @@ describe Api::V1::PropertiesController, :type => :controller do
       lat = Faker::Address.latitude
       lng = Faker::Address.longitude
 
-      near_properties = create_list(:property, 5, {lat: lat, lng: lng, property_type: 'apartment', marketing_type: 'sell'})
-      _not_matching_property = create(:property, {lat: lat, lng: lng, property_type: 'apartment', marketing_type: 'rent'})
-      _far_property = create(:property, {lat: lat+1, lng: lng+1, property_type: 'apartment', marketing_type: 'sell'})
+      near_properties = create_list(:property, 5, :is_apartment, :is_sell, {lat: lat, lng: lng})
+      _not_matching_property = create(:property, :is_apartment, :is_rent, {lat: lat, lng: lng})
+      _far_property = create(:property, :is_apartment, :is_sell, {lat: lat+1, lng: lng+1})
 
       get :search, params: {lat: lat, lng: lng, property_type: 'apartment', marketing_type: 'sell'}
 
