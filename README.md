@@ -39,3 +39,64 @@ Initializing the setup of this module is in the Property Model itself, and you c
 
      RAILS_ENV=test rake db:drop db:create db:migrate
      rspec
+
+**Endpoint**
+    
+    [GET] /api/v1/properties/search
+    
+    Request Params:
+    ---------------
+        :lat
+            - manditory, validation: (-90 <= value <= 90)
+        :lng 
+            - manditory, validation: (-180 <= value <= 180)
+        :property_type
+            - manditory, validation: (inclusion in: ['apartment', 'single_family_house'])
+        :marketing_type
+            - manditory, validation: (inclusion in: ['rent', 'sell'])
+        :radius
+            - optional, validation: (decimal in Kilometers)
+     
+    Response:
+    ---------
+        Success:
+        --------
+               {
+                   "successful" => true,
+                   "result_data" => {
+                        "properties" => [
+                                          {
+                                        
+                                            house_number: "31", 
+                                            street: "Marienburger Straße", 
+                                            city: "Berlin", 
+                                            zip_code: "10405
+                                            state: "Berlin",
+                                            lat: '13.4211476',
+                                            lng: '52.534993',
+                                            price: '350000'
+                                          },
+                                          {
+                                        
+                                            house_number: "16", 
+                                            street: "Winsstraße", 
+                                            city: "Berlin", 
+                                            zip_code: "10405"
+                                            state: "Berlin",
+                                            lat: '52.533533',
+                                            lng: '13.425226',
+                                            price: '320400'
+                                        
+                                          }
+                                         # ... other properties 
+                                        ]
+                   }
+               }
+        
+        Errors:
+        -------
+                {
+                    "successful" => false,
+                    "error" => "Error Msg"
+                }            
+
