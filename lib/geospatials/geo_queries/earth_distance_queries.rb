@@ -18,7 +18,7 @@ module Geospatials
                  lat: lat,
                  lng_column_name: options[:full_lng_column_name],
                  lat_column_name: options[:full_lat_column_name],
-                 radius_in_meters: (radius * meter_conversion_factor).to_i}
+                 radius_in_meters: radius * meter_conversion_factor}
       end
     end
   end
