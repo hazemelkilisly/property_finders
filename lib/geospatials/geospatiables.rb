@@ -32,8 +32,8 @@ module Geospatials
 
       # Comparison between EarthDistance and Postgis:
       # https://hashrocket.com/blog/posts/juxtaposing-earthdistance-and-postgis
-      def within_query(lng, lat, radius, method = self.geo_method)
-        Geospatials::GeospatialUtils::GEO_METHODS_CLASSES[method]
+      def within_query(lng, lat, radius)
+        Geospatials::GeospatialUtils::GEO_METHODS_CLASSES[self.geo_method]
             .within_query(lng,
                           lat,
                           radius,
