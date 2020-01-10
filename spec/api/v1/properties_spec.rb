@@ -46,7 +46,7 @@ describe Api::V1::PropertiesController, :type => :controller do
 
     it 'Return error in case of no near records with filters found' do
       get :search, params: {lat: Faker::Address.latitude, lng: Faker::Address.longitude, property_type: 'apartment', marketing_type: 'sell'}
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(200)
       expect(jsonified_response[:error]).to eq("No properties found around the sent coordinates with the sent filters.")
     end
 
