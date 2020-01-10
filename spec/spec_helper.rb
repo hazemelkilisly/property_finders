@@ -53,6 +53,7 @@ RSpec.configure do |config|
   # Database Cleaner
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
+    # Skipping spatial_ref_sys for not screwing up PostGIS tables
     DatabaseCleaner.clean_with(:truncation, except: %w(spatial_ref_sys))
   end
 
