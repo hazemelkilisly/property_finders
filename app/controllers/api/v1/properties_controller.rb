@@ -13,7 +13,8 @@ module Api
           response_data = properties.map {|property| PropertyPresenter.new(property).as_json}
           render json: generate_result_hash(properties: response_data)
         else
-          render json: generate_errors_hash('No properties found around the sent coordinates with the sent filters.')
+          render json: generate_errors_hash('No properties found around the sent coordinates with the sent filters.'),
+                 status: :no_content
         end
       end
     end
