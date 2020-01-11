@@ -9,7 +9,7 @@ module Geospatials
         cattr_accessor :geospatial_unit, :lat_column_name, :lng_column_name, :full_lat_column_name, :full_lng_column_name, :geo_method
 
         self.geo_method = options[:geo_method] || Geospatials::GeospatialUtils::DEFAULT_GEO_METHOD
-        self.geospatial_unit = options[:geospatial_unit] || Geospatials::GeospatialUtils::DEFAULT_GEOSPATIAL_UNI
+        self.geospatial_unit = options[:geospatial_unit] || Geospatials::GeospatialUtils::DEFAULT_GEOSPATIAL_UNIT
         self.lng_column_name = options[:lng_column_name] || Geospatials::GeospatialUtils::DEFAULT_LNG_COLUMN_NAME
         self.lat_column_name = options[:lat_column_name] || Geospatials::GeospatialUtils::DEFAULT_LAT_COLUMN_NAME
         self.full_lat_column_name = "#{self.table_name}.#{self.lat_column_name}"
