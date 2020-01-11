@@ -16,15 +16,6 @@ module Geospatials
             )
           ) * 7926.3352) * 1609.344) <= %{radius_in_meters}
         SQL
-        # query = <<-SQL.squish
-        #   (acos(
-        #     cos(radians(%{lat_column_name}))
-        #     * cos(radians(%{lat}) )
-        #     * cos(radians(%{lng}) - radians(%{lng_column_name}))
-        #     + sin(radians(%{lat_column_name}))
-        #     * sin(radians(%{lat}))
-        #   ) * 6371) <= %{radius_in_meters}
-        # SQL
         query % {lng: lng,
                  lat: lat,
                  lng_column_name: options[:full_lng_column_name],
