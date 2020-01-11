@@ -56,14 +56,14 @@ describe Api::V1::PropertiesController, :type => :controller do
 
       near_properties = create_list(:property, 5, :is_apartment, :is_sell, {lat: lat, lng: lng})
       create(:property, :is_apartment, :is_rent, {lat: lat, lng: lng})
-      create(:property, :is_apartment, :is_sell, {lat: lat+1, lng: lng+1})
+      create(:property, :is_apartment, :is_sell, {lat: lat + 1, lng: lng + 1})
 
       get :search, params: {lat: lat, lng: lng, property_type: 'apartment', marketing_type: 'sell'}
 
-      near_properties_coord = near_properties.map{|prop| [prop.lat.to_s, prop.lng.to_s]}
-      results_coord = jsonified_response[:result_data][:properties].map{|prop| [prop[:lat], prop[:lng]]}
+      near_properties_coord = near_properties.map {|prop| [prop.lat.to_s, prop.lng.to_s]}
+      results_coord = jsonified_response[:result_data][:properties].map {|prop| [prop[:lat], prop[:lng]]}
 
-      expect(near_properties_coord - results_coord).to be_empty
+      expect(results_coord - near_properties_coord).to be_empty
     end
   end
 end
