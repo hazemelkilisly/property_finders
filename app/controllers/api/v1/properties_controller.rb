@@ -10,7 +10,7 @@ module Api
                          .where(property_type: @property_type, marketing_type: @marketing_type)
 
         if properties.present?
-          response_data = properties.map {|property| PropertyPresenter.new(property).as_json}
+          response_data = PropertiesPresenter.new(properties).as_json
           render json: generate_result_hash(properties: response_data)
         else
           render json: generate_errors_hash('No properties found around the sent coordinates with the sent filters.')
